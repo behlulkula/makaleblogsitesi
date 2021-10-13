@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<div class="p-5 mb-4 bg-light rounded-3 text-left">
+
+{% if article %} <!--article geldiyse True olacak-->
+
+<h4>{{ article.title }}</h4>
+<hr> 
+Yazar: {{ article.author }}
+<hr> 
+Giriş Yapılan Tarih: {{ article.created_date }}
+<hr> 
+{{ article.content|safe }} <!--Content için CKEditor kullanmıştık, HTML formatıyla kayıtlı olduğu için bunu dönüştürmemiz lazım-->
+
+{% else %}
+
+<div class = "alert alert-danger"> Böyle bir makale bulunmuyor</div>
+
+{% endif %}
+
+</div>
+{% endblock body %}

@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<div class="p-5 mb-4 bg-light rounded-3 text-left">
+
+    <h3>Makale Listesi</h3>
+    <hr>
+
+{% if articles %} <!--article geldiyse True olacak-->
+
+<div class="container">
+    <br/>
+	<div class="row justify-content-center">
+                        <div class="col-12 col-md-10 col-lg-8">
+                            <form class="card card-sm" action="/search" method="post">
+                                <div class="card-body row no-gutters align-items-center">
+                                    <div class="col-auto">
+                                        <i class="fas fa-search h4 text-body"></i>
+                                    </div>
+                                    <!--end of col-->
+                                    <div class="col">
+                                        <input name="keyword" class="form-control form-control-lg form-control-borderless" type="text" placeholder="Makale başlıklarında ara..">
+                                    </div>
+                                    <!--end of col-->
+                                    <div class="col-auto">
+                                        <button class="btn btn-lg btn-success" type="submit">Ara</button>
+                                    </div>
+                                    <!--end of col-->
+                                </div>
+                            </form>
+                        </div>
+                        <!--end of col-->
+                    </div>
+</div>
+<br/>
+
+<ul class="list-group">
+    {% for article in articles %}
+
+    <li class="list-group-item"><a href="articles/{{ article.id }}">{{ article["title"] }}</a></li>
+    
+    {% endfor %}
+  
+</ul>
+
+{% else %}
+
+<div class = "alert alert-danger">Herhangi bir makale eklenmedi.</div>
+
+{% endif %}
+
+</div>
+{% endblock body %}
